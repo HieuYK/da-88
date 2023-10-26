@@ -7,10 +7,13 @@
   padding-top: 54px;
 
   &__inner {
+    --inner-max-height: min(582px, 100vh - 158px);
+    --inner-padding: 30px;
+
     position: relative;
 
-    max-height: min(582px, 100vh - 158px);
-    padding: 30px;
+    max-height: var(--inner-max-height);
+    padding: var(--inner-padding);
 
     border-radius: 20px;
     background: var(--dropdown-bg-color);
@@ -28,12 +31,20 @@
 }
 
 .top-menu {
-  height: 100%;
+  // height: 100%; để % sẽ không xuất hiện thanh cuộn
+  // max-height: inherit; kế thừa __inner thì menu vẫn bị chòi ra,
+  //do menu__main có padding xuống dưới nên bị lệch
+  //(có thể margin ngược lại hoặc tính toán để trừ đi khoảng padding đó)
+  max-height: calc(
+    var(--inner-max-height) - var(--inner-padding) * 2
+  ); // để nội dung không chòi ra ngoài
 
   &__main {
     width: 292px;
-    height: 100%;
+    // height: 100%; để % sẽ không xuất hiện thanh cuộn
+    max-height: inherit; //kế thừa cấp cha
     border-right: 1px solid var(--top-menu-border-color);
+    overflow-y: auto;
   }
 }
 
@@ -65,6 +76,7 @@
     width: 24px;
     height: 24px;
     object-fit: cover;
+    filter: var(--menu-column-icon-color);
   }
 
   &__heading {
