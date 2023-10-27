@@ -32,6 +32,7 @@
 
 .top-menu {
   --main-column-width: 292px;
+  --max-inner-height: calc(min(582px, 100vh - 158px) - var(--inner-padding) * 2);
 
   position: relative;
 
@@ -40,9 +41,7 @@
     // height: 100%; để % sẽ không xuất hiện thanh cuộn, ta phải giới hạn kích thước
     //do __inner có padding trên dưới nên __inner bị lệch xuống
     //(có thể margin ngược lại hoặc tính toán để trừ đi khoảng padding đó)
-    height: calc(
-      min(582px, 100vh - 158px) - var(--inner-padding) * 2
-    ); // để nội dung không chòi ra ngoài
+    height: var(--max-inner-height); // để nội dung không chòi ra ngoài
     border-right: 1px solid var(--top-menu-border-color);
     overflow-y: auto;
   }
@@ -129,4 +128,13 @@
 
   //không cấn giới hạn height do inset cũng là một cách để giới hạn
   overflow-y: auto;
+
+  &--not-main {
+    position: initial;
+    inset: initial;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: var(--max-inner-height);
+    padding-left: 0;
+  }
 }
