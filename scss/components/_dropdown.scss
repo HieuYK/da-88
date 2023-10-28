@@ -9,7 +9,6 @@
   padding-top: 54px;
 
   @include abstracts.breakpoint(lg) {
-    display: block;
     position: initial;
     padding-top: 0;
   }
