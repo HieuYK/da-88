@@ -42,3 +42,50 @@
     margin-top: 6px;
   }
 }
+
+// Buttons
+.btn {
+  height: 46px;
+  border-radius: 6px;
+  padding: 0 20px;
+
+  background: #f8f8fb;
+
+  font-size: 1.8rem;
+  font-weight: 500;
+  // line-height: 144.444%; đặt height thì không cần line-height nữa, chữ cũng có 1 hàng nên không cần
+  user-select: none;
+
+  + .btn {
+    margin-left: 20px;
+  }
+
+  &--text {
+    color: #9e9da8;
+    background: transparent;
+    font-weight: 400;
+  }
+
+  &--primary {
+    background: #ffb700;
+  }
+
+  &--outline {
+    background: transparent;
+    border: 1px solid #d2d1d6;
+  }
+
+  &--rounded {
+    border-radius: 99px;
+  }
+
+  &[disabled],
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
