@@ -2748,7 +2748,7 @@ html.dark {
   bottom: 50px;
 }
 .auth__intro-img {
-  width: var(--width);
+  width: min(424px, 100%);
   max-width: 100%;
 }
 .auth__intro-text {
